@@ -76,7 +76,7 @@ const NavBar = () => {
                 </DrawerHeader>
                 <AvatarStyled alt="Ed Roh" src="https://canhquannhaxanh.com/wp-content/uploads/2023/05/avatar-gai-xinh-41.jpg" />
                 <Title variant="h6">
-                    Ed Roh
+                    Nguyễn Lương
                 </Title>
                 <Subtitle variant="body2">
                     VP Fancy Admin
