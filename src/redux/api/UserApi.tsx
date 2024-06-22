@@ -3,6 +3,7 @@ import DataDisease from '../data/user-disease';
 import { LocationWithCount } from '../module';
 import { RegionPatientProps } from '../../components/pages/module';
 import { DataUsers } from '../data/admin';
+import Patient from '../data/patient-list';
 
 const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
 
@@ -18,6 +19,15 @@ const userAPI = {
             }, randomDelay);
         });
     },
+
+    getUserDisease: () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(Patient);
+            }, randomDelay);
+        });
+    },
+
     getTopLocations: (locationQuantity: number): Promise<RegionPatientProps[]> => {
         return new Promise((resolve) => {
             setTimeout(() => {

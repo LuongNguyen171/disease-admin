@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import { Box, Chip, IconButton, useTheme } from '@mui/material';
+import { Box, Chip, CircularProgress, IconButton, useTheme } from '@mui/material';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import HealingOutlinedIcon from '@mui/icons-material/HealingOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
@@ -11,85 +11,11 @@ import Title from '../../layout/title';
 import { tokens } from "../../../theme";
 import { PatientProps } from '../module';
 import GanttChartModal from '../../modals/GanttChartModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../redux/store/Store';
+import { getUserDisease } from '../../../redux/reducer/User';
+import Patient from '../../../redux/data/patient-list';
 
-
-
-const Patient: PatientProps[] = [
-    {
-        id: '666d5c3df252432ec2e9085e', name: 'Nguyễn Hữ Lương', address: 'Thủ Đức', phone: '(665)121-5454',
-        email: 'jonsnow@gmail.com', status: 'Đang điều trị',
-        route: [
-            { location: 'Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Bình Thạnh', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e9085f', name: 'Lê Thi Lan', address: 'Quận 1', phone: '(421)314-2288',
-        email: 'cerseilannister@gmail.com', status: 'Đã hồi phục',
-        route: [
-            { location: 'Quận 2', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'quận 3', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90860', name: 'Phạm Thị Ngu', address: 'tp Thủ Đức', phone: '(422)982-6739',
-        email: 'jaimelannister@gmail.com', status: 'Đã hồi phục',
-        route: [
-            { location: 'Thủ Dầu 1', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Thủ Đức', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90861', name: 'Nguyễn Văn Tân', address: 'tp Thủ Đức', phone: '(921)425-6742',
-        email: 'anyastark@gmail.com', status: 'Đã hồi phục',
-        route: [
-            { location: 'Quận 3', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Quận 6', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90863', name: 'Đỗ Van Tiến', address: 'tp Thủ Đức', phone: '(421)445-1189',
-        email: 'daenerystargaryen@gmail.com', status: 'Đang điều trị',
-        route: [
-            { location: 'Tp Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Quận 1', startDate: '2022-01-11', endDate: '2022-01-20' },
-            { location: 'Quận 5', startDate: '2022-01-8', endDate: '2022-01-20' },
-            { location: 'Quận 3', startDate: '2022-02-3', endDate: '2022-02-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90862', name: 'Trần Văn Kiên', address: 'tp Thủ Đức', phone: '(232)545-6483',
-        email: 'evermelisandre@gmail.com', status: 'Đã hồi phục',
-        route: [
-            { location: 'Tp Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Quận 5', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90863', name: 'Nguyễn Tấn Dũng', address: 'tp Thủ Đức', phone: '(543)124-0123',
-        email: 'ferraraclifford@gmail.com', status: 'Đang điều trị',
-        route: [
-            { location: 'Quận 1', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Thủ Dầu 1', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90864', name: 'Nguyễn Văn Ngan', address: 'tp Thủ Đức', phone: '(222)444-5555',
-        email: 'rossinifrances@gmail.com', status: 'Đã chết',
-        route: [
-            { location: 'Quận 3', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'TP Thủ Đức', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-    {
-        id: '666d5c3df252432ec2e90865', name: 'Trần Thế Mĩ', address: 'tp Thủ Đức', phone: '(444)555-6239',
-        email: 'harveyroxie@gmail.com', status: 'Đã chết',
-        route: [
-            { location: 'Quận 1', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Quận 3', startDate: '2022-01-11', endDate: '2022-01-20' },
-        ],
-    },
-];
 
 
 
@@ -99,6 +25,20 @@ const PatientList: React.FC = () => {
     const colors = tokens(theme.palette.mode);
     const [patient, setPatient] = useState<PatientProps | null>(null);
     const [isOpen, setIsOpen] = useState(false)
+
+    const { loadingGetUserDisease,
+        successGetUserDisease,
+        userDisease,
+    } = useSelector((state: RootState) => state.User);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+
+
+    useEffect(() => {
+        dispatch(getUserDisease());
+    }, [dispatch]);
+    console.log("user desease: ", userDisease)
 
     const handleViewDetails = (params: any) => {
         setIsOpen(true)
@@ -207,8 +147,17 @@ const PatientList: React.FC = () => {
                     }
                 }}
             >
-                <DataGrid checkboxSelection rows={Patient} columns={columns} />
-                <GanttChartModal isOpen={isOpen} onClose={onClose} patient={patient} />
+
+                {loadingGetUserDisease ? (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                        <CircularProgress size={80} thickness={4} />
+                    </Box>
+                ) : (
+                    <>
+                        <DataGrid checkboxSelection rows={Patient} columns={columns} />
+                        <GanttChartModal isOpen={isOpen} onClose={onClose} patient={patient} />
+                    </>
+                )}
             </Box>
         </Box>
     );

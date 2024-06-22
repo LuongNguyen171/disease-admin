@@ -6,6 +6,11 @@ export interface userState {
   successGetAllUserDisease: boolean,
   allUserDisease: any,
 
+  loadingGetUserDisease: boolean,
+  errGetUserDisease: any,
+  successGetUserDisease: boolean,
+  userDisease: any,
+
   loadingGetTopLocations: boolean,
   errGetTopLocations: any,
   successGetTopLocations: boolean,

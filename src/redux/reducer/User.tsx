@@ -21,6 +21,22 @@ export const getAllUserDisease = createAsyncThunk(
 );
 
 
+export const getUserDisease = createAsyncThunk(
+    'getUserDisease',
+    async (args, { rejectWithValue }) => {
+        try {
+            return (await userApi.getUserDisease());
+        } catch (error: any) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+
 export const getTopLocations = createAsyncThunk(
     'getTopLocations',
     async (args: { locationQuantity: number }, { rejectWithValue }) => {
@@ -62,6 +78,11 @@ const initialState: userState = {
     successGetAllUserDisease: false,
     allUserDisease: null,
 
+    loadingGetUserDisease: false,
+    errGetUserDisease: null,
+    successGetUserDisease: false,
+    userDisease: null,
+
     loadingGetTopLocations: false,
     errGetTopLocations: null,
     successGetTopLocations: false,
@@ -100,6 +121,29 @@ const userSlice = createSlice({
             state.successGetAllUserDisease = false;
             state.allUserDisease = null;
             state.errGetAllUserDisease =
+                action.payload !== undefined ? action.payload : null;
+        });
+
+        // get user disease
+        builder.addCase(getUserDisease.pending, (state) => {
+            state.loadingGetUserDisease = true;
+            state.successGetUserDisease = false;
+            state.userDisease = null;
+            state.errGetUserDisease = null;
+        });
+
+        builder.addCase(getUserDisease.fulfilled, (state, action) => {
+            state.loadingGetUserDisease = false;
+            state.successGetUserDisease = true;
+            state.userDisease = action.payload;
+            state.errGetUserDisease = null;
+        });
+
+        builder.addCase(getUserDisease.rejected, (state, action) => {
+            state.loadingGetUserDisease = false;
+            state.successGetUserDisease = false;
+            state.userDisease = null;
+            state.errGetUserDisease =
                 action.payload !== undefined ? action.payload : null;
         });
 
