@@ -74,7 +74,7 @@ const NavBar = () => {
                         <MenuIcon sx={{ color: '#ffffff' }} />
                     </IconButton>
                 </DrawerHeader>
-                <AvatarStyled alt="Ed Roh" src="/static/images/avatar/1.jpg" />
+                <AvatarStyled alt="Ed Roh" src="https://canhquannhaxanh.com/wp-content/uploads/2023/05/avatar-gai-xinh-41.jpg" />
                 <Title variant="h6">
                     Ed Roh
                 </Title>
@@ -84,7 +84,7 @@ const NavBar = () => {
                 <Divider sx={{ backgroundColor: "#ffffff", opacity: '0.5', marginTop: 4 }} />
                 <List sx={{ textAlign: 'start' }}>
                     <ListItemStyled disablePadding>
-                        <ListItemButton onClick={() => navigate('/')}
+                        <ListItemButton onClick={() => navigate('/dashboard')}
                             selected={isActive('/')}
                         >
                             <ListItemIcon><Home sx={{ color: '#ffffff' }} /></ListItemIcon>

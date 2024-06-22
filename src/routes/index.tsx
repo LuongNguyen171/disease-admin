@@ -6,12 +6,12 @@ import AdminFormPage from "../components/pages/adminForm";
 import LoginPage from "../components/pages/login";
 
 const publicRouters = [
-    { path: '/', component: DasboardPage },
+    { path: '/dashboard', component: DasboardPage },
     { path: '/admin-list', component: AdminListPage },
     { path: '/patient-list', component: PatientListPage },
     { path: '/statistical', component: StatisticalPage },
     { path: '/admin-form', component: AdminFormPage },
-    { path: '/login', component: LoginPage, layout: null },
+    { path: '/', component: LoginPage, layout: null },
 
 ];
 

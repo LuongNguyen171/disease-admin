@@ -16,39 +16,39 @@ import GanttChartModal from '../../modals/GanttChartModal';
 
 const Patient: PatientProps[] = [
     {
-        id: '1', name: 'Jon Snow', address: 'tp Thủ Đức', phone: '(665)121-5454',
+        id: '666d5c3df252432ec2e9085e', name: 'Nguyễn Hữ Lương', address: 'Thủ Đức', phone: '(665)121-5454',
         email: 'jonsnow@gmail.com', status: 'Đang điều trị',
         route: [
-            { location: 'Location A', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Location B', startDate: '2022-01-11', endDate: '2022-01-20' },
+            { location: 'Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
+            { location: 'Bình Thạnh', startDate: '2022-01-11', endDate: '2022-01-20' },
         ],
     },
     {
-        id: '2', name: 'Cersei Lannister', address: 'tp Thủ Đức', phone: '(421)314-2288',
+        id: '666d5c3df252432ec2e9085f', name: 'Lê Thi Lan', address: 'Quận 1', phone: '(421)314-2288',
         email: 'cerseilannister@gmail.com', status: 'Đã hồi phục',
         route: [
-            { location: 'Location A', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Location B', startDate: '2022-01-11', endDate: '2022-01-20' },
+            { location: 'Quận 2', startDate: '2022-01-01', endDate: '2022-01-10' },
+            { location: 'quận 3', startDate: '2022-01-11', endDate: '2022-01-20' },
         ],
     },
     {
-        id: '3', name: 'Jaime Lannister', address: 'tp Thủ Đức', phone: '(422)982-6739',
+        id: '666d5c3df252432ec2e90860', name: 'Phạm Thị Ngu', address: 'tp Thủ Đức', phone: '(422)982-6739',
         email: 'jaimelannister@gmail.com', status: 'Đã hồi phục',
         route: [
-            { location: 'Location A', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Location B', startDate: '2022-01-11', endDate: '2022-01-20' },
+            { location: 'Thủ Dầu 1', startDate: '2022-01-01', endDate: '2022-01-10' },
+            { location: 'Thủ Đức', startDate: '2022-01-11', endDate: '2022-01-20' },
         ],
     },
     {
-        id: '4', name: 'Anya Stark', address: 'tp Thủ Đức', phone: '(921)425-6742',
+        id: '666d5c3df252432ec2e90861', name: 'Nguyễn Văn Tân', address: 'tp Thủ Đức', phone: '(921)425-6742',
         email: 'anyastark@gmail.com', status: 'Đã hồi phục',
         route: [
-            { location: 'Location A', startDate: '2022-01-01', endDate: '2022-01-10' },
-            { location: 'Location B', startDate: '2022-01-11', endDate: '2022-01-20' },
+            { location: 'Quận 3', startDate: '2022-01-01', endDate: '2022-01-10' },
+            { location: 'Quận 6', startDate: '2022-01-11', endDate: '2022-01-20' },
         ],
     },
     {
-        id: '5', name: 'Daenerys Targaryen', address: 'tp Thủ Đức', phone: '(421)445-1189',
+        id: '666d5c3df252432ec2e90863', name: 'Đỗ Van Tiến', address: 'tp Thủ Đức', phone: '(421)445-1189',
         email: 'daenerystargaryen@gmail.com', status: 'Đang điều trị',
         route: [
             { location: 'Tp Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
@@ -58,7 +58,7 @@ const Patient: PatientProps[] = [
         ],
     },
     {
-        id: '6', name: 'Ever Melisandre', address: 'tp Thủ Đức', phone: '(232)545-6483',
+        id: '666d5c3df252432ec2e90862', name: 'Trần Văn Kiên', address: 'tp Thủ Đức', phone: '(232)545-6483',
         email: 'evermelisandre@gmail.com', status: 'Đã hồi phục',
         route: [
             { location: 'Tp Thủ Đức', startDate: '2022-01-01', endDate: '2022-01-10' },
@@ -66,7 +66,7 @@ const Patient: PatientProps[] = [
         ],
     },
     {
-        id: '7', name: 'Ferrara Clifford', address: 'tp Thủ Đức', phone: '(543)124-0123',
+        id: '666d5c3df252432ec2e90863', name: 'Nguyễn Tấn Dũng', address: 'tp Thủ Đức', phone: '(543)124-0123',
         email: 'ferraraclifford@gmail.com', status: 'Đang điều trị',
         route: [
             { location: 'Quận 1', startDate: '2022-01-01', endDate: '2022-01-10' },
@@ -74,7 +74,7 @@ const Patient: PatientProps[] = [
         ],
     },
     {
-        id: '8', name: 'Rossini Frances', address: 'tp Thủ Đức', phone: '(222)444-5555',
+        id: '666d5c3df252432ec2e90864', name: 'Nguyễn Văn Ngan', address: 'tp Thủ Đức', phone: '(222)444-5555',
         email: 'rossinifrances@gmail.com', status: 'Đã chết',
         route: [
             { location: 'Quận 3', startDate: '2022-01-01', endDate: '2022-01-10' },
@@ -82,7 +82,7 @@ const Patient: PatientProps[] = [
         ],
     },
     {
-        id: '9', name: 'Harvey Roxie', address: 'tp Thủ Đức', phone: '(444)555-6239',
+        id: '666d5c3df252432ec2e90865', name: 'Trần Thế Mĩ', address: 'tp Thủ Đức', phone: '(444)555-6239',
         email: 'harveyroxie@gmail.com', status: 'Đã chết',
         route: [
             { location: 'Quận 1', startDate: '2022-01-01', endDate: '2022-01-10' },

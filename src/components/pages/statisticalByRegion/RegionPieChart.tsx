@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react';
 import {
     PieChart, Pie, Cell, Tooltip, Legend,
 } from 'recharts';
-import { RegionPatientProps } from '../module';
+import { PatientPieChartProps, RegionPatientProps } from '../module';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../redux/store/Store';
+import { getTopLocations } from '../../../redux/reducer/User';
 
-
-const data: RegionPatientProps[] = [
-    { region: 'TP Thu Duc', patients: 500 },
-    { region: 'Quan 1', patients: 420 },
-    { region: 'Quan 5', patients: 300 },
-    { region: 'Thu Dau 1', patients: 240 },
-    { region: 'Khac', patients: 450 },
-];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6384'];
 
-const PatientPieChart = () => {
+const PatientPieChart: React.FC<PatientPieChartProps> = ({ data }) => {
+
 
     const [windowDimensions, setWindowDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
+
     useEffect(() => {
         const handleResize = () => {
             setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
@@ -26,6 +23,7 @@ const PatientPieChart = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
 
     return (
 
@@ -41,7 +39,7 @@ const PatientPieChart = () => {
                 dataKey="patients"
             >
                 {
-                    data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                    data?.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
                 }
             </Pie>
             <Tooltip />
@@ -51,7 +49,7 @@ const PatientPieChart = () => {
                 align="center"
                 verticalAlign="middle"
                 payload={
-                    data.map((entry, index) => ({
+                    data?.map((entry: any, index: any) => ({
                         id: entry.region,
                         type: 'square',
                         value: `${entry.region} (${entry.patients})`,

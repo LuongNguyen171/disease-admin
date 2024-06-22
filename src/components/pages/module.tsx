@@ -21,15 +21,20 @@ export interface StatCardProps {
     icon: React.ReactNode;
     title: string;
     value: string;
-    percentage: string;
+    percentage?: string;
 }
 
-export interface data {
+export interface Data {
     name: string;
     treatment: number;
     recovered: number;
     deaths: number;
 }
+
+export interface StatisticalChartProps {
+    data?: Data[];
+}
+
 export interface Transaction {
     id: string;
     city: string;
@@ -63,4 +68,24 @@ export interface TeamMemberProps {
 export interface RegionPatientProps {
     region: string;
     patients: number;
+}
+
+export interface PatientPieChartProps {
+    data?: RegionPatientProps[];
+}
+
+interface RegionWithPation {
+    region: string;
+    patients: number;
+}
+
+export interface Disease {
+    id: string;
+    userId: string;
+    diseaseId: string;
+    location: string;
+    state: number;
+    status: number;
+    createdAt: string;
+    updatedAt: string;
 }

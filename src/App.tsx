@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { publicRouters } from './routes';
 import axios from 'axios';
 import DefaultLayout from './components/layout/DefaultLayout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   useEffect(() => {
@@ -14,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <Router>
         <Routes>
           {publicRouters.map((route: any, index: number) => {

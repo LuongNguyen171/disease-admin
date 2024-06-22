@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, Checkbox, FormControlLabel, TextField, Typography, Link } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../redux/store/Store';
+import { login } from '../../../redux/reducer/User';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const { loadingLogin, successLogin, errLogin } = useSelector((state: RootState) => state.User);
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate()
 
     const handleLogin = () => {
-        // Xử lý logic đăng nhập ở đây
-        console.log('Phone:', phone);
-        console.log('Password:', password);
+        dispatch(login({ phone, password }));
     };
+
+    useEffect(() => {
+        if (successLogin) {
+            toast.success('Login successful!');
+            navigate('/dashboard')
+
+        }
+        if (errLogin) {
+            toast.error('Login failed: ' + errLogin);
+        }
+    }, [successLogin, errLogin]);
 
     return (
         <Box sx={{ display: 'flex', height: '100vh' }}>
@@ -27,7 +44,7 @@ const LoginPage = () => {
             >
                 <img src="logo_url_here" alt="Logo" style={{ marginBottom: 16 }} />
                 <Typography variant="h4" sx={{ marginBottom: 1 }}>
-                    Welcome To Admin !
+                    Welcome To Admin!
                 </Typography>
                 <Typography variant="body1" sx={{ marginBottom: 3 }}>
                     Please enter your details
@@ -66,8 +83,9 @@ const LoginPage = () => {
                     variant="contained"
                     onClick={handleLogin}
                     sx={{ marginTop: 2, width: '100%', bgcolor: '#141b2d' }}
+                    disabled={loadingLogin}
                 >
-                    Login
+                    {loadingLogin ? 'Logging in...' : 'Login'}
                 </Button>
                 <Typography variant="body2" sx={{ marginTop: 2 }}>
                     By creating an account, you agree to our{' '}

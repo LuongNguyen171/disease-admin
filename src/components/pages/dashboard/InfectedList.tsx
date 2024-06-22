@@ -2,10 +2,10 @@ import { Box, Typography } from "@mui/material";
 import { Transaction } from "../module";
 
 const transactions: Transaction[] = [
-    { id: '0a123sb', city: 'TP.Hồ Chí Minh', date: '2022-11-02', total: 123 },
-    { id: '01e4dsa', city: 'TP.Hồ Chí Minh', date: '2021-09-01', total: 123 },
-    { id: '120s51a', city: 'TP.Hồ Chí Minh', date: '2019-04-15', total: 123 },
-    { id: '0315dsaa', city: 'TP.Hồ Chí Minh', date: '2022-04-01', total: 123 }
+    { id: '0a123sb', city: 'TP.Hồ Chí Minh', date: '2024-06-23', total: 22 },
+    { id: '01e4dsa', city: 'TP.Hồ Chí Minh', date: '2024-06-22', total: 20 },
+    { id: '120s51a', city: 'TP.Hồ Chí Minh', date: '2019-06-21', total: 19 },
+    { id: '0315dsaa', city: 'TP.Hồ Chí Minh', date: '2022-06-20', total: 15 }
 ];
 
 
